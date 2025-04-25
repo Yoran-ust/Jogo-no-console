@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,14 +33,14 @@ namespace jogoNoConsole
 
                 case "mago":
                     Life = 50;
-                    Atack = 70;
+                    Atack = 80;
                     Defense = 60;
                     break;
 
                 case "arqueiro":
-                    Life = 70;
-                    Atack = 50;
-                    Defense = 25;
+                    Life = 60;
+                    Atack = 60;
+                    Defense = 55;
                     break;
 
                 default:
@@ -50,8 +51,16 @@ namespace jogoNoConsole
                     break;
             }
 
-
+           
         } 
+        public void ReceberDano(int ataqueInimigo)
+        {
+            Dano calculadora = new Dano();
+            int danoRecebido = calculadora.CalcularDano(ataqueInimigo, this.Defense);
+            this.Life -= danoRecebido;
+            Console.WriteLine($"{Name} carambolas você recebeu {danoRecebido} de vida!! oia tua vida {Life}");
+
+        }
 
 
     }
